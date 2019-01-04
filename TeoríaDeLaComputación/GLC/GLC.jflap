@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><structure mode="Default mode" type="grammar">
+	<structure type="variable_alph">
+		<symbol>S</symbol>
+	</structure>
+	<structure type="terminal_alph">
+		<symbol>(</symbol>
+		<symbol>)</symbol>
+		<symbol>*</symbol>
+		<symbol>+</symbol>
+		<symbol>-</symbol>
+		<symbol>/</symbol>
+		<symbol>a</symbol>
+	</structure>
+	<structure type="start_var">
+		<value>S</value>
+	</structure>
+	<structure type="production_set">
+		<production>
+			<rhs>(S)</rhs>
+			<lhs>S</lhs>
+		</production>
+		<production>
+			<rhs>S</rhs>
+			<lhs>S</lhs>
+		</production>
+		<production>
+			<rhs>S*S</rhs>
+			<lhs>S</lhs>
+		</production>
+		<production>
+			<rhs>S+S</rhs>
+			<lhs>S</lhs>
+		</production>
+		<production>
+			<rhs>S-S</rhs>
+			<lhs>S</lhs>
+		</production>
+		<production>
+			<rhs>S/S</rhs>
+			<lhs>S</lhs>
+		</production>
+		<production>
+			<rhs>a</rhs>
+			<lhs>S</lhs>
+		</production>
+	</structure>
+</structure>

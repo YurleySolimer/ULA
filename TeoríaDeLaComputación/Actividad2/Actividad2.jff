@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 6.4.--><structure>
+	<type>mealy</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="DDD">
+			<x>529.0</x>
+			<y>8.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="DDI">
+			<x>433.0</x>
+			<y>240.0</y>
+		</state>
+		<state id="2" name="DII">
+			<x>346.0</x>
+			<y>93.0</y>
+		</state>
+		<state id="3" name="DID">
+			<x>704.0</x>
+			<y>82.0</y>
+		</state>
+		<state id="4" name="IDD">
+			<x>731.0</x>
+			<y>434.0</y>
+		</state>
+		<state id="5" name="IDI">
+			<x>588.0</x>
+			<y>233.0</y>
+		</state>
+		<state id="6" name="IID">
+			<x>535.0</x>
+			<y>530.0</y>
+		</state>
+		<state id="7" name="III">
+			<x>325.0</x>
+			<y>444.0</y>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>2</from>
+			<to>1</to>
+			<read>B</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>3</to>
+			<read>A</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>6</to>
+			<read>A</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>6</to>
+			<read>B</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>0</to>
+			<read>A</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<read>B</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>3</to>
+			<read>A</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>4</to>
+			<read>B</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>7</to>
+			<read>A</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>5</to>
+			<read>A</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>4</to>
+			<read>B</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>0</to>
+			<read>B</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>1</to>
+			<read>A</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>0</to>
+			<read>B</read>
+			<transout>G</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>4</to>
+			<read>A</read>
+			<transout>P</transout>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>7</to>
+			<read>B</read>
+			<transout>P</transout>
+		</transition>
+	</automaton>
+</structure>

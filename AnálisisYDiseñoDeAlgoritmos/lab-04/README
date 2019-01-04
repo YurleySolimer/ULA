@@ -1,0 +1,11 @@
+Archivos que contiene este directorio:
+
+  1-. lab-04.pdf: enunciado del laboratorio
+
+  2-. Makefile
+
+  3-. in-*.txt: problemas de asignación de prueba
+
+  4-. net.[HC], solver.[HC] y rand-gen: fuentes
+
+  5-. probs.txt: archivos con las matrices de probabilidades

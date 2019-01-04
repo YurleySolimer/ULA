@@ -1,0 +1,47 @@
+#include"testbench.h"
+void testbech::test(){
+	
+	cout<<endl<<endl<<"\t\t  y\tctrl\tz"<<endl;
+	cout<<"\t\t---------------------"<<endl<<endl;
+	
+	ctrl_out.write(1);
+	a_out.write(0x0);
+	wait();
+
+	this->print_values();
+
+
+
+	ctrl_out.write(1);
+	a_out.write(0x1);
+	wait();
+
+	this->print_values();
+
+
+	ctrl_out.write(1);
+	a_out.write(0x2);
+	wait();
+
+	this->print_values();
+
+	ctrl_out.write(1);
+	a_out.write(0x3);
+	wait();
+
+	this->print_values();
+
+
+	cout<<endl<<endl;
+	sc_stop();
+}
+
+
+
+void testbech::print_values(){
+	cout<<"\t\t"<<sc_int<2>(y_out.read()).to_string(SC_BIN)<<\
+		"\t"<<ctrl_out.read()<<\
+		"\t"<<sc_int<2>(z_in.read()).to_string(SC_BIN)<<\
+		endl;
+	cout<<"\t\t---------------------"<<endl;
+}

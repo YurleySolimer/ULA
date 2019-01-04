@@ -1,0 +1,36 @@
+#!/bin/bash
+
+prologue="\documentclass[landscape,a4paper]{minimal} 
+\usepackage{graphicx}
+\usepackage{psibycus}
+\usepackage[latin1]{inputenc} 
+\usepackage{tikz}
+\usepackage{xspace}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{curves}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{epsfig}
+\begin{document}
+\thispagestyle{empty}
+\input{"
+epilogue="} \end{document}"
+
+filename=`basename $1 .eepic`
+
+wrapper="$prologue $1 $epilogue"
+
+rm -f minimal.eps minimal.dvi minimal.log minimal.log minimal.aux
+
+echo $wrapper | latex
+
+echo $filename.eps
+
+dvips minimal && ps2eps -l minimal.ps && mv minimal.eps $filename.eps && rm minimal.*
+
+echo "generated "$filename.eps" file"
+
+rm -f minimal.eps minimal.dvi minimal.log minimal.log minimal.aux

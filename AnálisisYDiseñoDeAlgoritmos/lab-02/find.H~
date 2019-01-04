@@ -1,0 +1,100 @@
+//Yurley Barrios
+//C.I. 22.986.327
+
+
+using namespace std;
+
+using nodo = Graph_Node<char>;
+using arco  = Graph_Arc<Empty_Class>;
+using grafo   = List_Graph<nodo, arco>;
+
+ grafo g;
+
+
+// retorna la cantidad de nodos que satisfacen la máscara de color
+size_t count_node_color(const SocialNet & net, NetColor color)
+{
+	long i=0;
+  for (SocialNet::Node_Iterator it(net); it.has_curr(); it.next())
+    {
+      auto p = it.get_curr();
+		
+      if (p->get_info()  == color)
+			i++;
+ 	}
+
+     
+   return i;
+}
+
+// retorna la cantidad de arcos que satisfacen la máscara de color
+size_t count_arc_color(const SocialNet & net, NetColor color)
+{
+	long i=0;
+  for (SocialNet::Arc_Iterator it(net); it.has_curr(); it.next())
+    {
+      auto p = it.get_curr();
+		auto a = net.get_src_node(p);
+		
+      if (a->get_info()  == color)
+			i++;
+ 	}
+
+     
+   return i;
+}
+
+// Retorna una lista ordenada por colores pares <color,cantidad de nodos>
+DynList<std::pair<NetColor, size_t>> count_node_color(const SocialNet & net)
+{
+  return DynList<std::pair<NetColor, size_t>>();
+}
+
+// Retorna una lista ordenada por colores pares <color,cantidad de arcos>
+DynList<std::pair<NetColor, size_t>> count_arc_color(const SocialNet & net)
+{
+  return DynList<std::pair<NetColor, size_t>>();
+}
+
+// Retorna una lista de nodos que satisfacen la máscara de color. La
+// lista está ordenada por id de nodo
+DynList<SocialNet::Node*> nodes(const SocialNet & net, NetColor color)
+{
+  return DynList<SocialNet::Node*>();
+}
+
+// retorna una lista de arcos que satisfacen la máscara de color. La
+// lista está ordenada por el costo del arco
+DynList<SocialNet::Arc*> arcs(const SocialNet & net, NetColor color) 
+{
+  return DynList<SocialNet::Arc*>();
+}
+
+Path<SocialNet> find_path_depth_first(const SocialNet & net, 
+				      const unsigned long start_id,
+				      const unsigned long end_id,
+				      const NetColor node_colors,
+				      const NetColor arc_colors)
+{
+  return Path<SocialNet>();
+}
+
+Path<SocialNet> find_path_breadth_first(const SocialNet & net, 
+					const unsigned long start_id,
+					const unsigned long end_id,
+					const NetColor node_colors,
+					const NetColor arc_colors)
+{
+  return Path<SocialNet>();
+}
+
+long long cost(const Path<SocialNet> & path)
+{
+  return 0;
+}
+
+long long cost(Path<SocialNet> && path)
+{
+  return cost(path);
+}
+

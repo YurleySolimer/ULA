@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>TDA Cola: Fichero Fuente cola.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">TDA Cola
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Implementación de una Cola Básica, no paramétrica que usa memoria dinámica</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">cola.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cola_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef CPILA</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define CPILA</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;<a class="code" href="snodo_8h.html">snodo.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_c_cola.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_cola.html">CCola</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_c_nodo_s.html">CNodoS</a>* inicio; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_c_nodo_s.html">CNodoS</a>* fin; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_c_cola.html#ac4572873d5934ab654a947a79279f0e3">CCola</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_c_cola.html#ac4572873d5934ab654a947a79279f0e3">CCola</a>(<span class="keyword">const</span> <a class="code" href="class_c_cola.html">CCola</a>&amp;);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_c_cola.html#a97c897057b1a12c4eb7caf04ec3eca8e">~CCola</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_c_cola.html#a7cc5f7ea75105a206267c876a9e275dc">meteEnCola</a>(<span class="keywordtype">float</span>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_c_cola.html#a26cb1de3fe34a0e4009dd99015794cf2">sacarDeCola</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_c_cola.html#ac56dbc7d3e13fecbefc24960c98bedbc">verInicio</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_cola.html#a489347b6eb57b47a00fda97b02249325">estaVacia</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_cola.html#a320662d4db51b7184e648f4121551e1b">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_c_cola.html">CCola</a>&amp;);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_c_cola_html_ac56dbc7d3e13fecbefc24960c98bedbc"><div class="ttname"><a href="class_c_cola.html#ac56dbc7d3e13fecbefc24960c98bedbc">CCola::verInicio</a></div><div class="ttdeci">float verInicio() const </div><div class="ttdoc">Método para observar el dato al inicio de la cola. </div><div class="ttdef"><b>Definition:</b> cola.cpp:74</div></div>
+<div class="ttc" id="class_c_cola_html_a489347b6eb57b47a00fda97b02249325"><div class="ttname"><a href="class_c_cola.html#a489347b6eb57b47a00fda97b02249325">CCola::estaVacia</a></div><div class="ttdeci">bool estaVacia() const </div><div class="ttdoc">Método para saber si la cola está vacia. </div><div class="ttdef"><b>Definition:</b> cola.cpp:83</div></div>
+<div class="ttc" id="snodo_8h_html"><div class="ttname"><a href="snodo_8h.html">snodo.h</a></div><div class="ttdoc">Implementación básica del TDA Nodo Simple, no es paramétrico. </div></div>
+<div class="ttc" id="class_c_nodo_s_html"><div class="ttname"><a href="class_c_nodo_s.html">CNodoS</a></div><div class="ttdef"><b>Definition:</b> snodo.h:11</div></div>
+<div class="ttc" id="class_c_cola_html_ac4572873d5934ab654a947a79279f0e3"><div class="ttname"><a href="class_c_cola.html#ac4572873d5934ab654a947a79279f0e3">CCola::CCola</a></div><div class="ttdeci">CCola()</div><div class="ttdoc">Fin de la cola. </div><div class="ttdef"><b>Definition:</b> cola.cpp:12</div></div>
+<div class="ttc" id="class_c_cola_html"><div class="ttname"><a href="class_c_cola.html">CCola</a></div><div class="ttdef"><b>Definition:</b> cola.h:14</div></div>
+<div class="ttc" id="class_c_cola_html_a26cb1de3fe34a0e4009dd99015794cf2"><div class="ttname"><a href="class_c_cola.html#a26cb1de3fe34a0e4009dd99015794cf2">CCola::sacarDeCola</a></div><div class="ttdeci">int sacarDeCola()</div><div class="ttdoc">Método para sacar datos de la cola. </div><div class="ttdef"><b>Definition:</b> cola.cpp:55</div></div>
+<div class="ttc" id="class_c_cola_html_a7cc5f7ea75105a206267c876a9e275dc"><div class="ttname"><a href="class_c_cola.html#a7cc5f7ea75105a206267c876a9e275dc">CCola::meteEnCola</a></div><div class="ttdeci">int meteEnCola(float)</div><div class="ttdoc">Método para meter datos en la cola. </div><div class="ttdef"><b>Definition:</b> cola.cpp:32</div></div>
+<div class="ttc" id="class_c_cola_html_a97c897057b1a12c4eb7caf04ec3eca8e"><div class="ttname"><a href="class_c_cola.html#a97c897057b1a12c4eb7caf04ec3eca8e">CCola::~CCola</a></div><div class="ttdeci">~CCola()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> cola.cpp:20</div></div>
+<div class="ttc" id="class_c_cola_html_a320662d4db51b7184e648f4121551e1b"><div class="ttname"><a href="class_c_cola.html#a320662d4db51b7184e648f4121551e1b">CCola::operator=</a></div><div class="ttdeci">void operator=(const CCola &amp;)</div><div class="ttdoc">Sobrecarga del operador de copia. </div><div class="ttdef"><b>Definition:</b> cola.cpp:110</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 22 de Abril de 2015 15:34:35 para TDA Cola por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

@@ -1,0 +1,14 @@
+#include "Buffer.h"
+
+Buffer::Buffer(sc_module_name nm):sc_module(nm){
+
+} 
+
+void Buffer::Comprobador {
+
+	if (c_in.read()==0)
+		s_out.write(s_in.read());
+	
+	else
+		s_out.write("ZZZZZZZZ");
+}

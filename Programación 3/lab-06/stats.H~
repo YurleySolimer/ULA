@@ -1,0 +1,323 @@
+// Yurley Solimer Barrios Monsalve
+// C.I. 22.986.327
+//Jorlen Stefanie Osuna Uzcategui
+// C.I. 24.196.692
+
+class Sampler: public DynSetTree<long, Rand_Tree>
+{
+	DynSetTree<long, Rand_Tree> t;
+
+public:
+
+//**********Constructores***********//
+  Sampler() { }
+
+  Sampler(const Sampler & s)
+	{
+		this->t=s.t;
+	 }
+		
+  Sampler(const DynList<long> & l)  : t(l){ }
+
+//**********Swap***********//
+  void swap(Sampler & s)
+	{ 
+		t.swap(s.t);
+	}
+
+  Sampler(Sampler && s) : Sampler()
+  {
+    swap(s);
+  }
+
+
+//**********Comparacion***********//
+  bool operator == (const Sampler & s) const
+  {
+		if(t.is_empty() && s.t.is_empty())
+			return true;
+
+		if(s.t.size()==size())
+			return true;
+    return false;
+  }
+
+//**********Tamaño de la muestra***********//
+  const size_t & size() const 
+{ 
+	if (t.is_empty())
+		return 0; 
+	return t.size();
+}
+
+
+//**********Media***********//
+  long double mean() const
+ { 
+		if(t.size()==0)
+			return 0;
+
+	long double suma=0;
+	DynSetTree<long, Rand_Tree>::Iterator it(t);
+ 	while( it.has_curr())
+	{
+    suma+= it.get_curr();
+  	it.next();
+	}
+
+	return (suma/size());
+	
+ }
+
+//**********Varianza***********//
+  long double var() const 
+	{ 
+		if(t.size()==0)
+			return 0;
+
+	  unsigned long  v=0;
+		long media=mean();
+	
+  for(DynSetTree<long, Rand_Tree>::Iterator it(t); it.has_curr();it.next())
+    	v += (it.get_curr() - media * (it.get_curr() - media));
+	  
+		return v/size();
+	}
+
+//**********Agregar elemento***********//
+  void add_sample(long sample)
+ { 
+		t.insert_dup(sample);		
+	}
+
+  void add_sample(istream & in)
+  {
+    long sample;
+    while (in >> sample)
+      add_sample(sample);
+  }
+
+//**********Obtencion de elemento***********//
+  long get_sample(size_t i)
+ { 
+	DynSetTree<long, Rand_Tree>::Iterator it(t);
+	long j = 0;
+	long v = 0;
+	long x = 0;
+
+	if (it.has_curr() == false)	
+		return -1;
+	else
+	{
+		while (it.has_curr() && j < i)
+		{
+			if (j == 0)
+			{
+				v = it.get_curr();
+				j++;
+				x = v;
+				it.next();
+			}
+			else 
+			{	
+				v = it.get_curr();
+				if (v == x)
+				{
+					x = v;
+					it.next();
+				}			
+				else
+				{
+					x = v;
+					j++;
+					it.next();
+				}
+			}
+		}
+		cout<<v;
+		return v;
+	}
+
+	}
+
+//**********Lista de muestras***********//
+  DynList<long> list() const
+  {
+			if(t.size()==0)
+				return DynList<long> ();
+
+		DynList<long> l;
+		DynSetTree<long, Rand_Tree>::Iterator it(t);
+
+		while (it.has_curr())
+		{
+			l.append(it.get_curr());
+			it.next();
+		}
+    return l;
+  }
+
+
+//**********Estadisticas basicas***********//
+	BasicStats stats() const
+  {
+
+ 	 unsigned long median;
+ 	 unsigned long q1 = t.select((t.size()/4)), q3 = t.select(((3*t.size())/4));
+
+
+		if (t.size()%2 == 0)
+			median = ((t.select(t.size()/2)+1)/2);
+		else 
+			median = (t.select((t.size()+1)/2));
+
+    return BasicStats(t.min(), t.max(), median, mean(), var(), size(), q1, q3);
+  }
+
+
+  // Lista con las muestras desde la posición l hasta r - 1
+  DynList<long> get_by_position(size_t l, size_t r) const
+  {
+		if(l>r)
+			throw domain_error("crossed indexes");
+
+		if(t.size()==0)
+			throw underflow_error("empty sample");
+
+		if(l>=t.size() || r>=t.size())
+			throw out_of_range("index out of range");
+
+		DynList<long> l1;
+		DynList<long> l2=list();
+		DynList<long>::Iterator it(l2);
+		for(long i=0;  it.has_current() ; i++, it.next())
+		{
+				if(i==l && i<=r-1)
+				{
+					l1.append(it.get_current());		
+					l++;	
+				}
+		}
+
+
+ return l1;
+  }
+
+  // Retorna un muestreador de las muestras entre la posiciones l y r
+  Sampler sample_by_position(size_t l, size_t r) const
+  {
+		
+		if(l>r)
+			throw domain_error("crossed indexes");
+
+		if(size()==0)
+			throw underflow_error("empty sample");
+
+		if(l>=size() || r>=size())
+			throw out_of_range("index out of range");
+
+		DynList<long> l1=get_by_position(l, r) ;
+		Sampler s(l1);
+  	return s;
+  }
+
+  // Por cada muestra de la lista l, retorna una lista ordenada por
+  // muestra de pares muestra,posición
+  DynList<Spair> get_by_key(const DynList<long> & l) const
+  {
+	
+		if(l.is_empty())
+			return DynList<Spair>();
+
+		DynList<Spair> s;
+ 		l.for_each([this,&s](long i )
+		{
+			if(t.exist(i))
+				s.append(make_tuple(i,t.position(i)));
+
+		else if(t.exist(i)==false) 
+			s.append(make_tuple(i,-1)); 
+
+		});
+
+	 return s;
+  }
+
+  // retorna una lista con las muestras comprendidas en el intervalo [sl, sr]
+  DynList<long> get_by_key(long sl, long sr) const
+  {
+		if (sl >sr)
+			throw domain_error("crossed keys");
+  	
+		DynList<long> l;
+		DynList<long> l2=list();
+		long i=0 ;
+
+		for(DynList<long>::Iterator it(l2);  it.has_current() ; it.next(), i++)
+		{
+				if(i>sl && i<=sr)
+				{
+					l.append(it.get_current());	
+				}
+		}
+
+		return l;
+  }
+  
+  // retorna un muestreador de las muestras mayores o iguales a sl y
+  // menores que sr
+  Sampler sample_by_key(long sl, long sr) const
+  {
+		if (sl >sr)
+			throw domain_error("crossed keys");
+
+		DynList<long> l=get_by_key(sl, sr) ;
+		l.insert(sl);
+		Sampler s(l);
+
+    return s;
+  }
+
+  // Reduce el muestreador a muestras mayores o iguales que sl y
+  // menores o iguales que sr 
+  Sampler & cut_key(long sl, long sr)
+  {
+		if (sl >sr)
+			throw domain_error("crossed keys");
+
+		if(t.size()==0)
+			return *this;
+
+			t=sample_by_key(sl,sr);
+  		return *this;
+  }
+
+  // Reduce el muestreador a las claves comprendidas en el rango [l,r)
+  Sampler & cut_position(size_t l, size_t r)
+  {
+		if(l>r)
+			throw domain_error("crossed indexes");
+
+		if(t.size()==0)
+			throw underflow_error("empty sample");
+
+		if(l>=t.size() || r>=t.size())
+			throw out_of_range("index out of range");
+
+		DynSetTree<long, Rand_Tree>::Iterator it(t);
+		DynSetTree<long, Rand_Tree> t2 = get_by_key(l,r);
+
+	
+		t=t2;
+
+    return *this;
+  }
+
+  friend ostream & operator << (ostream & s, const Sampler & sample)
+  {
+    return s << sample.stats();
+  }
+};
+
+
+

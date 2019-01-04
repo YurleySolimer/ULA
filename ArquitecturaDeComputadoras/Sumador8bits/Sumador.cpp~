@@ -1,0 +1,34 @@
+#include"S_Restador.h"	
+
+S_Restador::S_Restador(sc_module_name nm):sc_module(nm){
+	
+	
+	Comp[0]=new Complementador("Comp0");
+	Comp[1]=new Complementador("Comp1");
+	Comp[2]=new Complementador("Comp2");
+	Comp[3]=new Complementador("Comp3");
+	Comp[4]=new Complementador("Comp4");
+	Comp[5]=new Complementador("Comp5");
+	Comp[6]=new Complementador("Comp6");
+	Comp[7]=new Complementador("Comp7");
+	
+	for (i=0; i<8; i++) {
+		Comp[i]->a_in(x_sg[i]);
+		Comp[i]->b_in(y_sg[i]);
+		Comp[i]->s_out(z_sg[i]);
+	}
+
+	Comp[0]->c_in(c_in);
+	
+	for (i=0; i<7; i++) {
+		Comp[i+1]->c_in(c_sg[i]);
+		Comp[i]->c_out(c_sg[i]);
+	}
+
+	Comp[7]->c_out(c_out);
+}
+
+S_Restador::~S_Restador(){ }
+
+
+

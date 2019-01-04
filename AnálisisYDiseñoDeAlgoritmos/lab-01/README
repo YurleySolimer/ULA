@@ -1,0 +1,87 @@
+Este es el segundo laboratorio para diseño y análisis d ealgoritmos
+
+Este tar contiene los siguientes archivos:
+
+-. README: esto que está leyendo
+
+-. lab-02.pdf: el enunciado de la práctica. Léelo
+   detalladamente. A efectos de economía del trabajo, léelo
+   enteramente, así no lo entiendas, antes de mirar el código fuente.
+
+-. heap.C: programa que ejcutará tu laboratorio y que contiene
+   implenetaciones parciales
+
+   Salvo para incluir headers, NO MODIFIQUES ESTE ARCHIVO
+
+-. read-sum.C: contiene la implementación parcial de lo que
+   desarrollarás en la práctica. Contiene una sola función que es lo que
+   vas a implementar.
+
+-. Makefile: un makefile que compila y encadena tu programa.
+
+   Basta pues con ejecutar
+
+   	 make 
+
+   o
+
+	make heap
+
+   Para invocar toda la cadena de construcción del programa.
+
+   Es un error común modificar el fuente y omitir ejecutar
+   make. ¡Recuérdalo!
+
+-. *.txt: archivos con esta extensión cotienen números aleatorios y
+   sirven para probar tu programa.
+
+   Tu programa será probado con al menos 100 millones de números. Así
+   que esmérate en el performance.
+
+-. test-cases.txt: algununos casos de prueba basados en los archivos
+   .txt provistos. 
+
+
+USA los casos de prueba que se te están dando. También verifica tú mismo
+tu programa. Para ello, diseña tus pruebas con el archivo rang-50.txt,
+el cual contiene números "manejables".
+
+Por favor, si crees que uno o más casos de prueba son inválidos,
+reportalos.
+
+Sólo debes entregar el código fuente read-sum.C. Éste será compilado por
+los preparadores y sometido a pruebas. Las salidas deben corresponderse
+exactamente con las de ellos.
+
+Tienes toda la duración de la práctica para terminarla. La cantidad de
+intentos no está limitada. La nota de tu práctica será la nota de tu
+última entrega. Sé pues cuidadoso y respalda, porque, por ejemplo, si
+haces 3 intentos con notas 15, 12, 13, tu calificación definitiva será
+13, que fue la nota de la última entrega.
+
+
+NOTA SOBRE LA CORRUPCIÓN Y EL PLAGIO
+====================================
+
+Mucho se habla de la corrupción en estos tiempos. Así que aprovechando
+esta "moda", me permito observarte que el plagio, en cualquiera de sus
+niveles, es un acto de corrupción de los más serios, pues estás
+adjudicándote mérito por un trabajo que no has hecho; quizá es tan o más
+criminal que robar dinero o bienes, pues el plagio es el robo del
+trabajo de otro; trabajo que tú no has hecho. ¡No lo hagas!, ni copiar
+el trabajo del otro ni dárselo a otros. Piensa que si lo haces, y no
+exagero, estás comenzando tu vida como corrupto (si es que ya no ha
+comenzado).
+
+El objetivo de un ejercicio es aprender y ganar conocimiento. La
+realización de un ejercicio es una experiencia única e individual de
+aprendizaje que nadie más puede hacer por ti. Si plagias, aparte de que
+te incluyes en el conjunto de los corruptos y pierdes toda autoridad
+moral para criticar la corrupción, también desperdicias completamente
+una oportunidad de enriquecimiento que se te está dando.
+
+Por otra parte, si plagias creas un clima de desconfianza que atenta
+contra el diseño y realización de estos ejercicios, cuyo propósito es
+enseñarte y corregirte más que evaluarte. Cuando plagias, no sólo
+cometes un crimen y entras al conjunto de los corruptos, sino que le
+restringes severamente a los demás sus oportunidades de aprendizaje.

@@ -1,0 +1,28 @@
+#ifndef TESTBENCH_H
+#define TESTBENCH_H
+#include <systemc.h>
+#include <iostream>
+#include "Full_Adder.h"
+#include "Complementador.h"
+
+using namespace std;
+class testbech:public sc_module{
+	public:
+		public:
+		sc_out<sc_uint<8> > a_out;
+		sc_out<bool> ctrl_out;
+		sc_in<sc_uint<8> > s_in;
+		sc_in_clk clk;
+
+		SC_CTOR(testbech){
+		SC_THREAD(test);
+		sensitive<<clk.pos();
+		dont_initialize();
+		}	
+	private:
+		void print_values();
+		void test();
+
+
+};
+#endif

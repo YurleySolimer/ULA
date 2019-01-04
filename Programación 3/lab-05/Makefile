@@ -1,0 +1,28 @@
+ALEPH = /home/yurley/aleph/
+CXX = clang++-3.6
+
+CLANGPATH = /usr/bin
+
+CXX = $(CLANGPATH)/clang++-3.6
+
+OPTIMIZATION = -g -O0
+
+WARN = -Wall -Wextra -Wcast-align -Wno-sign-compare -Wno-write-strings \
+       -Wno-parentheses -Wno-invalid-source-encoding
+
+FLAGS = $(OPTIMIZATION) -std=c++14 $(WARN)
+
+INCLUDE = -I. -I $(ALEPH) 
+
+LIBS = -L $(ALEPH) \
+       -lAleph -lnana -lm -lgsl -lgslcblas -lgmp -lmpfr -lasprintf -lpthread -lc
+
+all: word-find 
+
+clean:
+	rm -f word-find 
+
+word-find: word-find.C word-find.H dictnode-32.o
+	$(CXX) $(FLAGS) $(INCLUDE) $@.C -g -O0 -o $@ dictnode-32.o $(LIBS)
+
+

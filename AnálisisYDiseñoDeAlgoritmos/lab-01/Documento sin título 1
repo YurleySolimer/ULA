@@ -1,0 +1,118 @@
+#include <iostream>
+#include <fstream>
+#include <tpl_dynBinHeap.H>
+#include <tpl_binHeap.H>
+#include <map>
+#include <tpl_arrayHeap.H>
+
+std::pair<SumExtremes, SumExtremes> 
+compute_extremes(ifstream & in, const size_t num_lines, const size_t m)
+{
+  if (m > num_lines)
+    {
+      cout << "num_lines is smaller than n";
+      exit(0);
+    }
+
+  // Este es un lugar propicio para declarar tus estructuras de datos
+  // (heap, tree, array... )
+
+	ArrayHeap<Ulong, std::greater<Ulong>> heap_smallers;
+	long sum_line_small=0;
+
+
+	ArrayHeap<Ulong, std::less<Ulong>> heap_biggers;
+	long sum_line_big=0;
+
+  // leer los primeros m números, pues antes no se tiene la suma en
+  // línea. Guardarlos en las estructuras de datos que emplees para
+  // llevar los m menores y mayores
+
+  
+
+  for (int i = 0; i < m and not in.eof(); ++i) 
+    {
+      Ulong value;
+      in >> value;
+		
+		heap_smallers.insert(value); 	
+		sum_line_small=sum_line_small + value; 
+
+		heap_biggers.insert(value); 	
+		sum_line_big=sum_line_big + value; 
+		
+	  }
+
+
+
+  // Ahora continuas leyendo hasta que completes los num_lines o se
+  // alcance el fin del archivo
+  for (int i = m; i <= num_lines and not in.eof(); ++i)
+    {
+      Ulong value;
+      in >> value;
+
+		
+		if (value < heap_smallers[m-1])
+			{
+			
+				heap_smallers.remove(heap_smallers[m-1]);
+				heap_smallers.insert(value);
+	
+				sum_line_small=sum_line_small + value; 
+
+			}
+
+		/*if (value > heap_biggers[0])
+			{
+			
+				heap_biggers.remove(heap_biggers[0]);
+				heap_smallers.insert(value);
+	
+				sum_line_big=sum_line_big + value; 
+
+			}*/
+
+ 				
+		
+	 } 
+
+	//heap_smallers.remove(heap_smallers[0]);
+	//sum_line_small=sum_line_small - heap_smallers[m]; 
+		
+  /* Aquí probalemente requieras mover o copiar tus conjuntos resultado
+     a variables de tipo DynList. Podrías hacer por ejemplo
+
+	
+
+     Luego copias de tus conjuntos a estas listas.
+  */
+
+  DynList<Ulong> smallers;
+  DynList<Ulong> biggers;
+ /* for (int i = 0; i < m  ; ++i)
+    {
+		  smallers.insert(heap_smallers[i]);
+			biggers.insert(heap_biggers[i]);
+			
+	 }
+*/
+
+  // A más tardar aquí debes declarar el valor de retorno, el cual
+  // podría ser de la siguiente forma
+	
+	std::pair<SumExtremes, SumExtremes> ret_val;
+
+	
+	ret_val.first.extremes=smallers;
+	ret_val.first.sum=sum_line_small;
+	ret_val.second.extremes=biggers;
+	ret_val.second.sum=sum_line_big;
+
+ 	
+
+
+  /* Ahora copias las listas y sumas en líneas a ret_val */
+
+  return ret_val;
+}

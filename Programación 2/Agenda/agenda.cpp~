@@ -1,0 +1,68 @@
+#include <fstream>
+#include "agenda.h"
+using namespace std;
+
+
+
+	Agenda::Agenda(){ }
+	
+
+	Agenda::Agenda(string &n)	{
+	Nombre=n;
+			}
+
+	Agenda::~Agenda(){
+			}
+
+void Agenda::agregar_contacto(Registro &reg){
+open(Nombre.c_str(), ios::out | ios::app);
+(*this) << reg.nombre<<" ";
+(*this) << reg.apellido<<" ";
+(*this) << reg.edad<<" ";
+(*this) << reg.telefono<<" ";
+(*this) << reg.email<<"\n";
+close();
+}
+
+
+void Agenda::buscar(string & cad, Registro *& a_reg, int & c){
+Registro r;
+open(Nombre.c_str(), ios::in);
+char edad[03];
+string s_e;
+int Tam=0;
+int j=0;
+while(!eof() && (*this) >> r.nombre){
+(*this) >> r.apellido;
+(*this) >> r.edad;
+(*this) >> r.telefono;
+(*this) >> r.email;
+sprintf(edad, "%d", r.edad);
+s_e=edad;
+//una constante definida en l ckase string para decir que no encontro la cadena.string::npos
+if(r.nombre.find(cad)!=string::npos||r.apellido.find(cad)!=string::npos||s_e.find(cad)!=string::npos||r.telefono.find(cad)!=string::npos||r.email.find(cad)!=string::npos){
+Tam++;
+}
+}
+if (Tam){
+
+a_reg=new Registro[Tam];
+seekg (0, beg);
+while(!eof() && (*this)>>r.nombre){
+(*this)>>r.apellido;
+(*this)>>r.edad;
+(*this)>>r.telefono;
+(*this)>>r.email;
+if(r.nombre.find(cad)!=string::npos||r.apellido.find(cad)!=string::npos||s_e.find(cad)!=string::npos||r.telefono.find(cad)!=string::npos||r.email.find(cad)!=string::npos){
+a_reg[j].nombre=r.nombre;
+a_reg[j].apellido=r.apellido;
+a_reg[j].edad=r.edad;
+a_reg[j].email=r.email;
+j++;
+}
+}
+}
+close();
+c=Tam;
+}
+

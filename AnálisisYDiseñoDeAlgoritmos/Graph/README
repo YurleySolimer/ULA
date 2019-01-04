@@ -1,0 +1,65 @@
+Este directorio contiene los siguientes archivos:
+
+ex1.C: programa que ejemplifica como instanciar y construir un grafo con la
+       biblioteca Aleph-w. Se hace uso de los diversos iteradores para imprimir
+       el grafo en pantalla.
+
+       Ejecuta: ./ex1
+
+ex2.C: Programa que contiene un ejemplo de instanciación, construcción y
+       generación de un archivo .dot (archivo de graphviz) para posteriormente
+       ser generada una visualización del grafo.
+
+       Ejecuta: ./ex2
+
+ex3.C: Programa que muestra cómo un grafo se almacena en y se recupera de
+       memoria secundaria.
+
+       Ejecuta: ./ex3
+
+ex4.C: Programa que muestra la implementación del algoritmo de cálculo de
+       los componentes conexos de un grafo basado en recorrido en amplitud.
+       Aquí se puede ver cómo se instrumentan las operaciones para pintar nodos
+       y arcos y como se verifica si un nodo o arco está pintado. También
+       se muestra cómo utilizar los mapeos entre grafos. Finalmente se
+       genera un .dot del grafo.
+
+       Ejecuta: ./ex4
+
+ex5.C: Programa que muestra la instruentación del recorrido en amplitud para
+       ejemplificar el uso de los contadores. En el contador de cada uno de los
+       nodos se escribe la longitud (en cantidad de arcos) del camino desde el
+       nodo de inicio del algoritmo. Al final se genera un .dot del grafo.
+
+       Ejecuta: ./ex5
+
+ex6.C: Programa que ejemplifica la lectura de un grafo desde un archivo de texto
+       en el cual, cada línea contiene un arco representado por dos letras que
+       representan la etiqueta del nodo. El grafo en el archivo fue el mismo
+       visto en clases en el estudio de los cálculos de los puntos de corte.
+       El grafo es leído por entrada estándar. Se hace el cálculo de los puntos
+       de corte; luego se pintan los componentes conexos alrededor de los puntos
+       de corte y finalmente se genera un .dot del grafo en el cual cada nodo
+       tiene un color de acuerdo al componente al cual pertenezca.
+
+       Ejecuta: ./ex6 < input_ex6.txt
+
+input_ex6.txt: Archivo con la definición de uno de los grafos vistos en clases.
+	       El archivo tiene en cada línea dos letras que representan las
+	       etiquetas de dos nodos conectados mediante un arco.
+
+Makefile: para compilar los programas.
+
+README: Esto que estás leyendo.
+
+Puedes compilar tus programas uno a uno mediante el comando make y el nombre
+base. Por ejemplo, para compilar ex1.C, ejecuta make ex1. Si deseas la versión
+optimizada del código generado, ejecuta make ex1-op.
+
+También puedes compilar todo de una vez mediante make all o solamente make.
+
+Cuando ejecutes alguno de los programas que generen archivos .dot, ejecutas el
+comando dot de graphviz para generar la visualización.
+
+Por ejemplo, si tienes un archivo dot llamado g.dot, puedes generar una imagen
+vectorial del grafo con el siguiente comando: dot -Tsvg g.dot -o g.svg.

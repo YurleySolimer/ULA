@@ -1,0 +1,11 @@
+/**
+ * @file hola.c
+ * @brief Hola mundo en C
+/
+
+#include <stdio.h>
+
+int main() {
+	printf("\nHola Mundo\n\n");
+	return 0;
+}

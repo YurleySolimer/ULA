@@ -1,0 +1,45 @@
+int i=0;
+
+/*while(i<50) {
+
+char c;
+cin>>c;
+
+		//filtro para mayuscula
+			c = tolower(c);
+
+		//filtro para caracteres especiales
+
+		if((int)c==-95 || (int)c==-92|| (int)c==-94|| (int)c==-96 || (int)c==-127 || 
+			(int)c==-124|| (int)c==-126|| (int)c==-128) 
+				c='a'; 
+		if((int)c==-87 || (int)c==-88|| (int)c==-86|| (int)c==-85 || (int)c==-119 || 
+			(int)c==-117|| (int)c==-118|| (int)c==-120)
+				c='e';
+		if((int)c==-83 || (int)c==-81|| (int)c==-82|| (int)c==-84 || (int)c==-115 || 
+			(int)c==-113|| (int)c==-114|| (int)c==-116)
+				c='i';
+		if((int)c==-77 || (int)c==-74|| (int)c==-76|| (int)c==-78 || (int)c==65-228 || 
+			(int)c==-109 ||(int)c==-106|| (int)c==-108|| (int)c==-110)
+				c='o';
+		if((int)c==-70 || (int)c==-68|| (int)c==-69|| (int)c==-102|| (int)c==-100 ||
+		   (int)c==-101|| (int)c==-103)
+				c='u';
+		//if((int)c==)
+			//c='c';
+		if((int)c==-79 || (int)c==-111)
+			c='n';
+cout<<(int)c<<endl;
+
+cout<<c<<endl;
+		//Excepcion para otros caracteres
+
+	   if (c!='-' && c!='$' && c!='a' && c!='b' && c!='c' && c!='d' && c!='e' && c!='f' && c!='g' && c!='h' && c!='i' && 
+		    c!='j' && c!='k' && c!='l' && c!='m' && c!='n' && c!='o' && c!='p' && c!='q' && c!='r' && c!='s' && c!='t' &&
+			 c!='s' && c!='u' && c!='v' && c!='w' && c!='x' && c!='y' && c!='z' && (int)c!=-61) 
+   		
+			 		throw invalid_argument("Invalid character"); 
+
+ 
+
+}*/

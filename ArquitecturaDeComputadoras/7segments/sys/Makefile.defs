@@ -1,0 +1,20 @@
+INCDIR = -I. -I.. -I$(SYSTEMC)/include -I $(QSCONNECTION)
+
+LIBDIR = -L. -L.. -L$(SYSTEMC)/lib-linux -L$(QSCONNECTION)
+
+
+LIBS   = -lsystemc -lm
+CFLAGS = -g -Wno-deprecated -Wall
+OBJS   = $(SRCS:.cpp=.o)
+EXE    = $(MODULE)
+.SUFFIXES: .cpp .o
+
+$(EXE): $(OBJS) 
+	$(CC) $(CFLAGS) $(INCDIR) $(QSLIBDIR) $(QSDIR) $(LIBDIR)  -o $@ $(OBJS) $(LIBS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCDIR) $(QSDIR)  -c $<
+
+clean:
+	rm -f $(OBJS) *~ $(EXE) core
+

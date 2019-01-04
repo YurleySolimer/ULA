@@ -1,0 +1,24 @@
+
+# include <istream>
+
+# include <ahSort.H>
+# include <tpl_dynMat.H>
+# include <tpl_tree_node.H>
+# include <generate_tree.H>
+
+# include <dictnode.H>
+
+# include <grid.H>
+# include <word-find.H>
+
+
+int main()
+{	
+
+	WordFind d(); 
+	Cnode a='a';
+	Cnode * r= &a;
+	d.legal_moves(0,0);
+	d.extract_word_from_stack();
+  d.search(0,0, r);
+}

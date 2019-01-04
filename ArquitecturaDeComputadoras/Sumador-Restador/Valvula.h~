@@ -1,0 +1,10 @@
+#ifndef VALVULA
+#define VALVULA
+
+#include "Buffer.h"
+#include "S_Restador.h"
+
+class Valvula public sc_module {
+ 	
+
+}

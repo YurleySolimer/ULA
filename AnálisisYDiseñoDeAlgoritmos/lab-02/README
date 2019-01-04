@@ -1,0 +1,91 @@
+Este es el tercer laboratorio para diseño y análisis d ealgoritmos
+
+Este tar contiene los siguientes archivos:
+
+-. README: esto que está leyendo
+
+-. lab-03.pdf: el enunciado de la práctica. Léelo
+   detalladamente. A efectos de economía del trabajo, léelo
+   enteramente, así no lo entiendas, antes de mirar el código fuente.
+
+-. net.H: contiene las especificaciones del grafo con el cual
+    trabajarás. Este es el primer archivo a estudiar.
+
+-. gen-net.[HC]: generador de grafos aleatorios.
+
+-. find.H: el fuente con el que debes trabajar y el cual te será evaluado
+   implementaciones parciales. Aseguráte de comprender cada rutina antes
+   de empezar a programarla.
+
+-. rand-paths.C: probador
+
+-. to-dot.C: fuente del convertidor de grafos a graphviz
+
+-. Makefile: un makefile que compila y encadena tu programa.
+
+   Basta pues con ejecutar
+
+   	 make 
+
+   Para invocar toda la cadena de construcción del programa.
+
+   Es un error común modificar el fuente y omitir ejecutar
+   make. ¡Recuérdalo!
+
+-. *.txt: archivos con esta extensión contienen grafos aleatorios,
+
+   Tu programa será probado con al menos un grafo de un millón de arcos. Así
+   que esmérate en el performance.
+
+
+Para la evaluación
+==================
+
+Sólo debes entregar el código fuente find.H. Envíalo por email a
+
+     leandro.r.leon@gmail.com
+
+Pon de subject del email AYDA-LAB-03. Esto es obligatorio. Si no lo
+haces así, entonces tu email no será filtrado por el evaluador y por
+supuesto tu laboratorio no será corregido. Adjunta find.H al email y
+coloca en el email y en el archivo find.H los nombres, apellidos y
+números de cédulas de los miembros de la pareja que está sometiendo. 
+
+Tu email será filtrado por un cliente simple y redireccionado a una
+carpeta especial. De allí, automáticamente el fuente será extraído del
+"attachement", compilado y evaluado. La única parte manual de este
+proceso es la evaluación del estilo de código y el envío del email de
+respuesta con los resultados de tu evaluación
+
+Tienes toda la duración de la práctica para terminarla. La cantidad de
+intentos no está limitada. La nota de tu práctica será la nota de tu
+última entrega. Sé pues cuidadoso y respalda, porque, por ejemplo, si
+haces 3 intentos con notas 15, 12, 13, tu calificación definitiva será
+13, que fue la nota de la última entrega.
+
+
+NOTA SOBRE LA CORRUPCIÓN Y EL PLAGIO
+====================================
+
+Mucho se habla de la corrupción en estos tiempos. Así que aprovechando
+esta "moda", me permito observarte que el plagio, en cualquiera de sus
+niveles, es un acto de corrupción de los más serios, pues estás
+adjudicándote mérito por un trabajo que no has hecho; quizá es tan o más
+criminal que robar dinero o bienes, pues el plagio es el robo del
+trabajo de otro; trabajo que tú no has hecho. ¡No lo hagas!, ni copiar
+el trabajo del otro ni dárselo a otros. Piensa que si lo haces, y no
+exagero, estás comenzando tu vida como corrupto (si es que ya no ha
+comenzado).
+
+El objetivo de un ejercicio es aprender y ganar conocimiento. La
+realización de un ejercicio es una experiencia única e individual de
+aprendizaje que nadie más puede hacer por ti. Si plagias, aparte de que
+te incluyes en el conjunto de los corruptos y pierdes toda autoridad
+moral para criticar la corrupción, también desperdicias completamente
+una oportunidad de enriquecimiento que se te está dando.
+
+Por otra parte, si plagias creas un clima de desconfianza que atenta
+contra el diseño y realización de estos ejercicios, cuyo propósito es
+enseñarte y corregirte más que evaluarte. Cuando plagias, no sólo
+cometes un crimen y entras al conjunto de los corruptos, sino que le
+restringes severamente a los demás sus oportunidades de aprendizaje.

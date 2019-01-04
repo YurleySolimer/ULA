@@ -1,0 +1,23 @@
+Esta máquina de Turing se encarga de leer cadenas de caracteres formadas por abc, donde la cantidad de c, estará limitada por la cantidad de a y de b. La máquina reconoce las cadenas, si la cantidad de c es mayor a la cantidad de a y menor a la cantidad de b, o si c es menor a la cantidad de a y mayor a la cantidad de b.
+
+Compuesta por un estado inicial, más otro cuatro estados, de los cuales dos son de aceptación.
+En el estado inicial se reconoce si la cadena comienza con a y se mantiene ahí hasta recibir una b. Asi la cinta cabecera se mueve a la derecha, sustituyendo a por a, la segunda cinta sustituye los espaciones en blanco por a y mueve a la derecha. Y la última cinta queda igual.
+Pasa al siguiente si luego de las a, viene una b, y de manera análoga, permanece en q1 hasta recibir una c. La cinta cabecera sustituye b por b, moviéndose a la derecha, la segunda cinta queda igual y la última sustituye espacios por b y mueve a la derecha.
+
+En q2, ocurre lo mismo, se mantiene leyendo las c, hasta finalizar la cadena. Se evalúa si m o n es mayor (si hay más a o más b). Primero leyendo todas las c, donde en la cinta cabecera se sustituye c por c, se mueve a la derecha, la segunda cinta sustituye a por espacios y mueve a la izquierda y la última sustituye espacios por espacios y mueve a la izquiera también.
+En caso de que hay más a (m mayor), la primera cinta sustituye c por c, mueve a la derecha, la segunda, a por espacios mueve a la izquierda y la tercera espacios por espacios, mueve a la izquierda.
+En cado de que haya más b (n mayor), la la primera cinta sustituye c por c, mueve a la derecha, la segunda, espacios por espacios mueve a la izquierda y la tercera b por espacios, mueve a la izquierda.
+
+El estado q3 reconoce la cadena si esta tiene más a que b.
+Y finalmente el estado q4 reconoce la cadena si tiene más b que c.
+(Esto considerando que c debe estar entre el max y el min de a y b).
+
+En cuanto a las transiciones.
+
+Para pasar de q0 a q1, se lee b y en la cabecera se sustituye por y mueve a la derecha, la segunda queda igual y la última cinta sustituye espacios por b y mueve a la derecha.
+
+De q1 a q2, la cabecera lee c, quedando igual. La segunda cinta sustituye espacios por espacios y mueve a la izquierda, al igual que la última.
+
+De q2 a q3, la cinta cabecera lee vacio, lee a y la tercera lee vacio, esto es porque la cantidad de a es la mayor y aquí reconoce.
+
+De q2 a q4, es análogo pero para b mayor, es decir, la primera cinta lee vacio, la segunda lee vacio y la última lee b.

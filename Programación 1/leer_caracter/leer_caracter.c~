@@ -1,0 +1,20 @@
+/**
+ * @file leer_caracter.c
+ * @brief Leer un caracter desde el teclado y mostrarlo por la consola
+ *
+ * @author Donato Galo
+ *         dgalo88@hotmail.com
+ */
+
+#include <stdio.h>
+
+int main() {
+
+	int c;
+
+	c = getchar();
+	putchar(c);
+
+	return 0;
+
+}

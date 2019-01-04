@@ -1,0 +1,132 @@
+
+# include <gsl/gsl_rng.h>
+# include <iostream>
+# include <tclap/CmdLine.h>
+# include <htlist.H>
+
+using namespace std;
+using namespace Aleph;
+using namespace TCLAP;
+
+# include "test.H"
+
+// Retorna una lista de n enteros aleatorios en el rango [min, max]
+DynList<long> build_list(size_t n, unsigned long seed, long min, long max)
+{
+  gsl_rng * r = gsl_rng_alloc (gsl_rng_mt19937); // aparto memoria generador
+  gsl_rng_set(r, seed % gsl_rng_max(r));         // inicializa el generador
+
+  DynList<long> ret; // esta será la lista resultado
+  for (size_t i = 0; i < n; ++i) // hago n sorteos
+    ret.append(min + gsl_rng_uniform_int(r, max + 1));
+
+  gsl_rng_free(r); // libero memoria del generador
+
+  return ret;
+}
+
+ostream & operator << (ostream & s, const DynList<long> & l)
+{
+  if (l.is_empty())
+    return s << "EMPTY";
+
+  l.for_each([&s] (const long & i) { cout << i << " "; });
+  return s << endl;
+}
+
+template <typename T1, typename T2>
+ostream & operator << (ostream & s, const DynList<tuple<T1, T2>> & l)
+{
+  if (l.is_empty())
+    return s << "EMPTY";
+
+  l.for_each([&s] (const tuple<long,long> & t) 
+	     {
+	      s << "(" << get<0>(t) << "," << get<1>(t) << ")";
+	     });
+  return s << endl;
+}
+
+void process_command_line(int argc, char *argv[])
+{
+  ValueArg<size_t> seed("S", "seed", "seed", false, 11, 
+			"seed for random number generator");
+  ValueArg<size_t> n("n", "num-samples", "number of samples", false, 1000,
+		     "number of samples to be generated");
+  ValueArg<long> min("l", "min", "minimum value", false, 0, 
+		     "minimum value to be generated");
+  ValueArg<long> max("r", "max", "maximum value", false, 10000, 
+		     "maximum value to be generated");
+  ValueArg<long> x("x", "x-value", "x value", false, 2, 
+		   "parameter x for some operations");
+  ValueArg<long> inf("i", "inf-val", "inferior value", false, 10, 
+		     "inferior value of range");
+  ValueArg<long> sup("s", "sup-val", "superior value", false, 1000, 
+		     "superior value of range");
+  CmdLine cmd("test lab-01", ' ', "0.0");
+  cmd.add(seed);
+  cmd.add(n);
+  cmd.add(min);
+  cmd.add(max);
+  cmd.add(x);
+  cmd.add(inf);
+  cmd.add(sup);
+  cmd.parse(argc, argv);
+  
+  if (min.getValue() > max.getValue())
+    {
+      cout << "Error: minimum " << min.getValue() << " is greater than maximum "
+	   << max.getValue() << endl;
+      exit(0);
+    }
+
+ if (inf.getValue() > sup.getValue())
+    {
+      cout << "Error: minimum " << inf.getValue() << " is greater than maximum "
+	   << sup.getValue() << endl;
+      exit(0);
+    }
+
+  long X = x.getValue();
+
+  cout << endl
+       << "Generating base list ... " << endl;
+  DynList<long> l = 
+    build_list(n.getValue(), seed.getValue(), min.getValue(), max.getValue());
+  cout << "done!" << endl
+       << endl
+       << l << endl  
+       << "find_mod_x(l, " << X << ") = ";
+
+  tuple<long, bool> t1 = find_mod_x(l, X);
+  cout << (get<1>(t1) ? to_string(get<0>(t1)) : "EMPTY") << endl
+       << endl
+       << "divide_by_x(l, " << X << ") = " << divide_by_x(l, X) << endl
+       << endl
+       << "transform_divided_by_x(l, " << X << ") = " 
+       << transform_divided_by_x(l, X) << endl
+       << endl
+       << "divisible_by_x(l, " << X << ") = " << divisible_by_x(l, X) << endl
+       << endl
+       << "all_are_divisible_by_x(l, " << X << ") = " 
+       << (all_are_divisible_by_x(l, X) ? "TRUE" : "FALSE") << endl
+       << endl
+       << "exist_divisible_by_x(l, " << X << ") = " 
+       << exist_divisible_by_x(l, X) << endl
+       << endl
+       << "sum(l) = " << sum(l) << endl
+       << endl
+       << "pairs_whose_sum_is_x(l, l, " << X << ") = " 
+       << pairs_whose_sum_is_x(l, l, X) << endl
+       << endl
+	<< "multiples_of mults (l, l) " 
+       << multiples_of(l, l) << endl
+       << endl
+       << "range_pos(l, " << inf.getValue() << ", " << sup.getValue() << ") = "
+       << range_pos(l, inf.getValue(), sup.getValue()) << endl;
+}
+
+int main(int argc, char *argv[])
+{
+  process_command_line(argc, argv);  
+}

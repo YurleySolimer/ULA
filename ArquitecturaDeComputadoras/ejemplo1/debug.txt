@@ -1,0 +1,8 @@
+g++  -g -Wno-deprecated -Wall -I. -I.. -I/home/usuarios/is/arqcomp/systemc/include -c and_gate.cpp
+g++  -g -Wno-deprecated -Wall -I. -I.. -I/home/usuarios/is/arqcomp/systemc/include -c testbench.cpp
+g++  -g -Wno-deprecated -Wall -I. -I.. -I/home/usuarios/is/arqcomp/systemc/include -c main.cpp
+main.cpp:4:34: error: conflicting declaration ‘char** argv’
+main.cpp:4:17: error: ‘argv’ has a previous declaration as ‘int argv’
+main.cpp: In function ‘int sc_main(int)’:
+main.cpp:26:1: warning: no return statement in function returning non-void [-Wreturn-type]
+make: *** [main.o] Error 1
